@@ -1,0 +1,6 @@
+{
+  "apple": { "price": 1.20, "name": "Red Apple" },
+  "banana": { "price": 0.80, "name": "Fresh Banana" },
+  "coke": { "price": 2.50, "name": "Coca Cola Can" },
+  "maggi": { "price": 4.50, "name": "Maggi Instant Noodles" }
+}
