@@ -112,7 +112,22 @@ export default function App() {
   };
 
   const removeItem = (name) => {
-    setCartItems(cartItems.filter((item) => item.name !== name));
+    const itemToRemove = cartItems.find((item) => item.name === name);
+    const newCartItems = cartItems.filter((item) => item.name !== name);
+    setCartItems(newCartItems);
+    
+    // Calculate new total
+    const newTotal = newCartItems.reduce((sum, i) => sum + i.price * i.quantity, 0);
+    
+    // Voice feedback
+    const message = `${name} removed from cart. Total is now ${newTotal.toFixed(2)} ringgit.`;
+    if (Platform.OS !== "web") {
+      Speech.speak(message, {
+        language: "en",
+        pitch: 1.0,
+        rate: 0.9,
+      });
+    }
   };
 
   const totalCost = cartItems.reduce((sum, i) => sum + i.price * i.quantity, 0);
